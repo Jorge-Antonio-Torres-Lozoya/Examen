@@ -1,0 +1,35 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar color="tertiary">
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #formData="ngForm" (ngSubmit)="signUpFun(formData)">
+    <ion-item>
+      <ion-input type="text" ngModel name="nombre_usuario" placeholder="Nombre de usuario">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" ngModel name="correo_electronico" placeholder="correo electrónico">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" ngModel name="contrasena" placeholder="Contraseña">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" ngModel name="nombre_tienda" placeholder="Nombre de la tienda">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" ngModel name="logo_tienda" placeholder="URL del logo de la tienda">
+      </ion-input>
+    </ion-item>
+    <div style="text-align: center;">
+      <ion-button color="success" type="submit">Registrarse</ion-button>
+    </div>
+  </form>
+</ion-content>

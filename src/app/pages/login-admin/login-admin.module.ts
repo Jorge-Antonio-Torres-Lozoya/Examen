@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
+import { RouterModule } from '@angular/router';
+import { LoginAdminComponent } from './login-admin.component';
 
-import { HomePageRoutingModule } from './home-routing.module';
 
 
 @NgModule({
+  declarations: [LoginAdminComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
-  ],
-  declarations: [HomePage]
+   RouterModule.forChild([{path: '', component: LoginAdminComponent}]),
+  ]
 })
-export class HomePageModule {}
+export class LoginAdminModule { }

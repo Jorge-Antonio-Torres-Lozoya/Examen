@@ -1,0 +1,25 @@
+<ion-content>
+  <ion-card mode="ios">
+    <ion-card-header>
+      <ion-card-title>Inicio de sesión</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form #formData="ngForm" (ngSubmit)="loginFun(formData)">
+        <ion-item *ngIf="error">{{error}}</ion-item>
+        <ion-item>
+          <ion-input type="text" ngModel name="correo_electronico" placeholder="Correo eléctronico">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" ngModel name="contrasena" placeholder="Contraseña">
+          </ion-input>
+        </ion-item>
+
+        <ion-button expand="block" color="tertiary" type="submit">Iniciar sesión</ion-button>
+      </form>
+      <ion-button expand="block" color="tertiary" id="open-modal-agregar"
+        (click)="navigateToPage()">registrate</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
