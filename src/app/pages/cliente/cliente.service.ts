@@ -16,4 +16,12 @@ export class ClienteService {
   create(data:any){
     return this.http.post<any>(`${environment.apiUrl}cliente`,data)
   }
+
+update(data:any,id:string){
+  return this.http.put<any>(`${environment.apiUrl}cliente/${id}`,data)
+  }
+  deleteCliente(id:string){
+    return this.http.delete<any>(`${environment.apiUrl}cliente/${id}`)
+
+  }
 }

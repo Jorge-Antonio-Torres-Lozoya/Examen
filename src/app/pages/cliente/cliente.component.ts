@@ -13,6 +13,7 @@ clientes?:any[];
 currentCliente?:any;
 clientesUsb?:Subscription;
 agregarClientesModal:boolean=false;
+editarClientesModal:boolean=false;
 
 admin_id?:number;
 
@@ -28,6 +29,11 @@ this.clientesUsb=this.clienteService.getAll().subscribe((res)=>{
   }
 
   editarCliente(cliente:any){
+    this.currentCliente=cliente;
+this.editarClientesModal=true;
+
+    console.log(this.currentCliente);
+
   }
 
   AgregarClientesModal()
@@ -55,9 +61,30 @@ this.clientesUsb=this.clienteService.getAll().subscribe((res)=>{
       this.agregarClientesModal=false;
 
     });
-
   }
+
+  onSubmitEditCliente(formEdit:NgForm){
+    if(!formEdit.value){
+      return;
+    }
+    console.log(formEdit.value);
+   this.clienteService.update(formEdit.value,this.currentCliente.id_cliente).subscribe((res)=>{
+      console.log(res);
+      this.ngOnInit();
+      this.editarClientesModal=false;
+   });
+    }
+    eliminar(){
+      this.clienteService.deleteCliente(this.currentCliente.id_cliente).subscribe((res)=>{
+        console.log(res);
+        this.ngOnInit();
+        this.editarClientesModal=false;
+      });
+    }
   CancelarAgregarClientesModal(){
     this.agregarClientesModal=false;
+  }
+  CancelarEditarClientesModal(){
+    this.editarClientesModal=false;
   }
 }

@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+
+
+
+<ion-content mode="ios">
+  <ion-header class="header">Seleccionar Cliente</ion-header>
+  <ion-row>
+    <ion-card class="tarjeta" color="light" *ngFor="let cliente of clientes;" (click)="seleccionarCliente(cliente)">
+      <div class="div-tarjeta">
+        <img class="imagen" src="{{cliente.url_imagen_cliente}}" alt="fotografia">
+      </div>
+
+      <ion-card-title class="ion-margin">{{cliente.nombre_cliente}}</ion-card-title>
+
+      <ion-card-content>
+        <p><b>Correo </b>{{cliente.correo_electronico_cliente}}</p>
+        <p><b>Teléfono </b>{{cliente.telefono}}</p>
+        <p><b>Dirección </b>{{cliente.direccion}}</p>
+
+      </ion-card-content>
+    </ion-card>
+
+  </ion-row>
+</ion-content>
+
+
+<ion-modal [isOpen]="SeleccionarProductosModal">
+  <ng-template>
+    <ion-content mode="ios">
+      <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="true" class="btn-check">
+        <ion-fab-button [disabled]="excesoDeStock" (click)="seleccionarProducto()">
+          <ion-icon name="checkmark-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-header class="header ion-padding">Seleccionar Productos</ion-header>
+
+      <ion-row>
+        <ion-card class="tarjeta" color="light" *ngFor="let producto of productos;">
+
+
+          <div class="div-tarjeta" (click)="toggleSelection(producto)">
+            <img class="imagen" src="{{producto.url_imagen_producto}}" alt="fotografia">
+          </div>
+            <ion-card-title class="ion-margin">{{producto.nombre_producto}}</ion-card-title>
+            <ion-card-content>
+              <!-- ... contenido de la tarjeta ... -->
+              <p><b>Descripción: </b>{{producto.descripcion}}</p>
+              <p><b>Stock</b>: {{producto.cantidad_unidades}}</p>
+              <p><b>Precio costo: </b>{{producto.precio_costo}}</p>
+              <p><b>Precio venta: </b>{{producto.precio_venta}}</p>
+
+
+              <div *ngIf="producto.selected">
+                <ion-item>
+                  <ion-input type="number" label="Cantidad: " [(ngModel)]="producto.cantidadDeseada"
+                             (ionChange)="actualizarCantidad(producto, producto.cantidadDeseada)">
+                  </ion-input>
+                </ion-item>
+                <ion-text color="danger" *ngIf="excesoDeStock">
+                  La cantidad no puede exceder el stock disponible.
+                </ion-text>
+              </div>
+
+
+          </ion-card-content>
+          <div class="container-icon"> <ion-icon *ngIf="producto.selected" name="checkmark-circle" color="primary"
+              class="icon-check"></ion-icon></div>
+
+        </ion-card>
+
+      </ion-row>
+
+    </ion-content>
+    <ion-toolbar color="medium" mode="ios" style="text-align: center;">
+      <ion-button color="dark" (click)="CancelarSeleccionarProductosModal()">Atras</ion-button>
+    </ion-toolbar>
+  </ng-template>
+</ion-modal>
+
+
+
+<ion-modal [isOpen]="ticketModal">
+  <ng-template>
+    <ion-content mode="ios">
+    <ion-header class="header ion-padding">Ticket</ion-header>
+    <ion-row>
+      <ion-card class="tarjeta" color="light" >
+          <!-- <ion-card-title class="ion-margin">{{producto.nombre_producto}}</ion-card-title> -->
+          <ion-card-content >
+            <ion-header class="text-center ion-padding-bottom">Cliente: {{currentVenta.cliente.nombre_cliente}}</ion-header>
+            <p><b>Id de la venta: </b>{{currentVenta.id_venta}}</p>
+            <div class="container-resumen " *ngFor="let venta of ventas">
+            <!-- ... contenido de la tarjeta ... -->
+            <p><b>Producto: </b>{{venta.producto.nombre_producto}}</p>
+            <p><b>Cantidad</b>: {{venta.cantidad}}</p>
+          </div>
+          <p class="text-center text"><b>Total: </b>{{total}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-content>
+    <ion-toolbar color="medium" mode="ios" style="text-align: center;">
+      <ion-button color="dark" (click)="cerrarTicketModal()">Cerrar</ion-button>
+    </ion-toolbar>
+  </ng-template>
+</ion-modal>

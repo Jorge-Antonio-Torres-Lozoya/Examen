@@ -15,7 +15,7 @@
     </ion-col>
     <ion-col>
 
-      <ion-card color="secondary" >
+      <ion-card (click)="toProducto()" color="secondary" >
         <img alt="Productos" src="https://stollermexico.com/wp-content/uploads/2021/11/productos.png" />
         <ion-card-header>
           <ion-card-title>Productos</ion-card-title>
@@ -26,10 +26,10 @@
       </ion-card>
     </ion-col>
   </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-card (click)="toVender()" color="tertiary">
-        <img alt="Vender"
+  <ion-row >
+    <ion-col class="ion-justify-content-center flex">
+      <ion-card (click)="toVender()" color="tertiary" class="size-card">
+        <img alt="Vender" class="img-size"
           src="https://static.semrush.com/blog/uploads/media/81/69/81699c8c370f16072b6655fc74dfb27c/top-5-actionable-ideas-for-upselling-your-agency-clients.svg" />
 
         <ion-card-header>
@@ -42,7 +42,7 @@
     </ion-col>
     <ion-col>
       <ion-card color="light" >
-        <img alt="ventas" width="80%"
+        <img alt="ventas"
           src="https://www.merida.gob.mx/municipio/portal/assets/img/elements/gaceta.svg" />
 
         <ion-card-header>

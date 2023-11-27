@@ -13,6 +13,9 @@ import { HomePageModule } from './pages/home/home.module';
 import { SignupAdminModule } from './pages/signup-admin/signup-admin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './components/shared/shared.module';
+import { ProductosModule } from './pages/productos/productos.module';
+import { ClienteModule } from './pages/cliente/cliente.module';
+import { VentaModule } from './pages/venta/venta.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +28,9 @@ import { SharedModule } from './components/shared/shared.module';
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
+    ProductosModule,
+    ClienteModule,
+    VentaModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

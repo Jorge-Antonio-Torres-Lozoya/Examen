@@ -21,6 +21,14 @@ const routes: Routes = [
       loadChildren: () => import('./pages/cliente/cliente.module').then( m => m.ClienteModule)
 
     },
+    {
+      path:'producto',
+      loadChildren: () => import('./pages/productos/productos.module').then( m => m.ProductosModule)
+    },
+    {
+      path:'vender',
+      loadChildren: () => import('./pages/venta/venta.module').then( m => m.VentaModule)
+    },
   {
     path: '',
     redirectTo: 'login-admin',

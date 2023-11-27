@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { VentaComponent } from './venta.component';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/app/components/shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { ProductosComponent } from './productos.component';
+import { IonicModule } from '@ionic/angular';
 
 
 
 @NgModule({
-  declarations: [ProductosComponent],
+  declarations: [VentaComponent],
   imports: [
     CommonModule,
-    IonicModule,
     FormsModule,
     SharedModule,
-    RouterModule.forChild([{path: '', component: ProductosComponent}]),
+    IonicModule,
+    RouterModule.forChild([{path: '', component: VentaComponent}]),
   ]
 })
-export class ProductosModule { }
+export class VentaModule { }
